@@ -36,3 +36,58 @@
     transform: rotate(360deg);
   }
 }
+
+/* Slider container */
+.slider {
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  padding: 20px 0;
+  position: relative;
+}
+
+/* UL container for logos */
+.slider ul {
+  display: flex;
+  flex-wrap: nowrap;      /* keep logos in one row */
+  width: max-content;     /* full width based on content */
+  animation: scroll 20s linear infinite; /* default speed */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each logo item */
+.slider li {
+  flex-shrink: 0;         /* prevent shrinking */
+  margin-right: 20px;
+}
+
+/* Images */
+.slider img {
+  display: block;
+  max-width: 150px;       /* desktop size */
+  height: auto;
+}
+
+/* Keyframes for smooth infinite scroll */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* move first half of duplicated logos */
+}
+
+/* Pause scroll on hover */
+.slider:hover ul {
+  animation-play-state: paused;
+}
+
+/* Responsive tweaks for mobile */
+@media (max-width: 768px) {
+  .slider ul {
+    animation: scroll 15s linear infinite; /* faster scroll on mobile */
+  }
+
+  .slider img {
+    max-width: 120px;    /* smaller images for mobile */
+  }
+}
