@@ -6,49 +6,30 @@ export default function Services() {
     {
       icon: FaCar,
       title: 'Luxury Car Rental',
-      description: 'Premium vehicles for every occasion with 24/7 support',
+      shortDesc: 'Premium vehicles with 24/7 support',
+      details: 'Experience unparalleled luxury with our meticulously maintained fleet of premium vehicles. From business travel to special occasions, we have the perfect vehicle for every journey.',
       features: ['Latest Models', 'GPS Tracking', '24/7 Support']
     },
     {
       icon: FaUsers,
       title: 'Corporate Services',
-      description: 'Professional transportation solutions for businesses',
+      shortDesc: 'Professional solutions for businesses',
+      details: 'Tailored transportation solutions for corporate clients, including executive cars, airport transfers, and event transport services.',
       features: ['Executive Cars', 'Airport Transfers', 'Event Transport']
     },
     {
       icon: FaClock,
       title: 'Airport Transfers',
-      description: 'Reliable pickup and drop-off services nationwide',
+      shortDesc: 'Reliable nationwide transfers',
+      details: 'Seamless airport pickup and drop-off services with flight tracking, meet & greet, and guaranteed on-time performance.',
       features: ['Flight Tracking', 'Meet & Greet', 'On-time Service']
     },
     {
       icon: FaShieldAlt,
       title: 'VIP Concierge',
-      description: 'Personalized luxury transportation experience',
+      shortDesc: 'Personalized luxury experience',
+      details: 'Exclusive VIP concierge services with personal drivers, luxury vehicles, and premium service for discerning clients.',
       features: ['Personal Driver', 'Luxury Vehicles', 'Premium Service']
-    }
-  ];
-
-  const whyChooseUs = [
-    {
-      icon: FaShieldAlt,
-      title: 'Safety First',
-      description: 'All our vehicles are regularly inspected and insured for your peace of mind.'
-    },
-    {
-      icon: FaClock,
-      title: '24/7 Support',
-      description: 'Round-the-clock customer service and roadside assistance available.'
-    },
-    {
-      icon: FaStar,
-      title: 'Premium Service',
-      description: 'Experienced, uniformed drivers with excellent customer service skills.'
-    },
-    {
-      icon: FaCheckCircle,
-      title: 'Quality Assurance',
-      description: 'Multiple payment options including cash, card, and online payments.'
     }
   ];
 
@@ -79,9 +60,8 @@ export default function Services() {
                   <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
                     Premium <span className="text-yellow-400">Services</span> for Every Journey
                   </h1>
-                  <p className="text-xl text-blue-100 leading-relaxed">
-                    Experience unparalleled luxury with our meticulously maintained fleet of premium vehicles.
-                    From business travel to special occasions, we have the perfect vehicle for every journey.
+                  <p className="text-lg text-blue-100 leading-relaxed">
+                    Premium vehicles for every occasion with 24/7 support.
                   </p>
                 </div>
 
@@ -152,8 +132,8 @@ export default function Services() {
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               Comprehensive <span className="text-blue-600">Transportation</span> Solutions
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From luxury car rentals to corporate transportation, we offer a complete range of premium services
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Complete range of premium transportation services
             </p>
           </div>
 
@@ -181,26 +161,45 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Service Details */}
       <section className="py-20 bg-gradient-to-r from-gray-900 to-blue-900 text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              Why Choose <span className="text-yellow-400">ETC</span>?
+              Service <span className="text-yellow-400">Details</span>
             </h2>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Experience the difference with our commitment to excellence and customer satisfaction
+              Discover the comprehensive details of our premium transportation services
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyChooseUs.map((item, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-400/20 rounded-2xl mb-4">
-                  <item.icon className="text-yellow-400 text-2xl" />
+          <div className="space-y-12">
+            {services.map((service, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                  <div>
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-400/20 rounded-2xl mb-6">
+                      <service.icon className="text-yellow-400 text-2xl" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
+                    <p className="text-blue-100 leading-relaxed mb-6">{service.details}</p>
+
+                    {/* Service Features */}
+                    <div className="grid grid-cols-2 gap-4">
+                      {service.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-center text-blue-100">
+                          <FaCheckCircle className="text-yellow-400 mr-3 flex-shrink-0" />
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* 3D Image Placeholder */}
+                  <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl h-64 flex items-center justify-center">
+                    <div className="text-blue-600 text-lg font-semibold">3D Image Coming Soon</div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-blue-100 leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>

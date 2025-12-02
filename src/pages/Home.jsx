@@ -1,34 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react';
-import AnimatedHero from '../components/AnimatedHero';
-import AnimatedCounter from '../components/AnimatedCounter';
+import React, { useRef } from 'react';
+import HeroSlider from '../components/HeroSlider';
 import FloatingActionButton from '../components/FloatingActionButton';
 import VehicleGrid from '../components/VehicleGrid';
+import CertificationsSection from '../components/certifications';
+import TestimonialsSection from '../components/Testimonials';
 import { vehicles } from "../utils/vehiclesData";
-import { FaCar, FaUsers, FaClock, FaShieldAlt, FaStar, FaCheckCircle, FaArrowRight, FaMapMarkerAlt, FaPhone, FaEnvelope, FaAward, FaGlobe, FaHandshake } from 'react-icons/fa';
+import { FaCar, FaStar, FaCheckCircle, FaMapMarkerAlt, FaHandshake } from 'react-icons/fa';
 
 export default function Home({ favorites, toggleFavorite }) {
-  const [isVisible, setIsVisible] = useState({});
   const observerRefs = useRef([]);
-
-  useEffect(() => {
-    const observers = observerRefs.current.map((ref, index) => {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setIsVisible(prev => ({ ...prev, [index]: true }));
-          }
-        },
-        { threshold: 0.1 }
-      );
-
-      if (ref) observer.observe(ref);
-      return observer;
-    });
-
-    return () => {
-      observers.forEach(observer => observer.disconnect());
-    };
-  }, []);
 
   let setRef = (index) => (el) => {
     observerRefs.current[index] = el;
@@ -67,58 +47,12 @@ export default function Home({ favorites, toggleFavorite }) {
     }
   ];
 
-  const achievements = [
-    { icon: FaAward, number: '25+', label: 'Years of Excellence' },
-    { icon: FaGlobe, number: '15+', label: 'Cities Covered' },
-    { icon: FaUsers, number: '1000+', label: 'Happy Customers' },
-    { icon: FaShieldAlt, number: '100%', label: 'Safety Record' }
-  ];
-
   return (
     <div className="min-h-screen">
       {/* Modern Animated Hero Section */}
-      <AnimatedHero />
+      <HeroSlider />
 
-      {/* Achievements Section */}
-      <section className="py-20 bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 text-white relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}></div>
-        </div>
 
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-              Trusted by <span className="text-yellow-400">Thousands</span>
-            </h2>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Join our growing family of satisfied customers who choose ETC for their premium transportation needs
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {achievements.map((achievement, index) => (
-              <div
-                key={index}
-                ref={setRef(index)}
-                className={`text-center transform transition-all duration-1000 ${
-                  isVisible[index] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
-              >
-                <AnimatedCounter
-                  end={achievement.number}
-                  icon={achievement.icon}
-                  className="text-white"
-                />
-                <div className="text-blue-100 mt-2">{achievement.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Services Overview */}
       <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
@@ -140,9 +74,7 @@ export default function Home({ favorites, toggleFavorite }) {
               <div
                 key={index}
                 ref={setRef(index + 4)}
-                className={`group bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${
-                  isVisible[index + 4] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                }`}
+                className={`group bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 translate-y-0 opacity-100`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${service.color} rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
@@ -190,6 +122,12 @@ export default function Home({ favorites, toggleFavorite }) {
           </div>
         </div>
       </section>
+
+      {/* Certifications Section */}
+      <CertificationsSection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-gray-900 to-blue-900 text-white relative overflow-hidden">
