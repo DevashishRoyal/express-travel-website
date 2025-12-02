@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCar, FaUsers, FaClock, FaShieldAlt, FaStar, FaCheckCircle, FaArrowRight } from 'react-icons/fa';
+import { FaCar, FaUsers, FaClock, FaShieldAlt, FaCheckCircle, FaArrowRight } from 'react-icons/fa';
 
 export default function Services() {
   const services = [
