@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FaLinkedin, FaTwitter, FaEnvelope, FaPhone, FaAward, FaUsers, FaLightbulb, FaHandshake, FaStar, FaQuoteLeft } from 'react-icons/fa';
+import { FaLinkedin, FaEnvelope, FaPhone, FaAward, FaUsers, FaLightbulb, FaHandshake, FaStar, FaQuoteLeft } from 'react-icons/fa';
 
 export default function Team() {
   const [isVisible, setIsVisible] = useState({});
@@ -180,12 +180,15 @@ export default function Team() {
 
                     {/* Social Links */}
                     <div className="flex justify-center space-x-4 mt-6">
+                      // eslint-disable-next-line jsx-a11y/anchor-is-valid
                       <a href="#" className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r ${member.color} rounded-full text-white hover:scale-110 transition-transform duration-300`}>
                         <FaLinkedin />
                       </a>
+                      // eslint-disable-next-line jsx-a11y/anchor-is-valid
                       <a href="#" className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r ${member.color} rounded-full text-white hover:scale-110 transition-transform duration-300`}>
                         <FaEnvelope />
                       </a>
+                      // eslint-disable-next-line jsx-a11y/anchor-is-valid
                       <a href="#" className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r ${member.color} rounded-full text-white hover:scale-110 transition-transform duration-300`}>
                         <FaPhone />
                       </a>
